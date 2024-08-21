@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA_Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Scrapper</title>
+</head>    
+<body>
+    <h1>Job Scrapper</h1>
+    <form action="/search">
+        <input type="text" name="keyword", placeholder="Write keyword please"/>
+        <button>Search</button>
+    </form>
+    <h2>Search Results for "{{ keyword }}": </h2>
+    {% for job in jobs %}
+        <div>       
+            <span> Title: {{job.title}}</span>  
+            <span> Company: {{job.company}}</span>
+            <span> Location: {{job.location}}</span>
+            <a href="{{job.url}}" target="_blank">Apply Now</a>                   
+        </div>
+    {% endfor %}
+
+</body>
+</html>
