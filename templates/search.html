@@ -4,23 +4,35 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA_Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Job Scrapper</title>
+    <title>Job Scraper</title>
+    <link rel="stylesheet" href="/static/style.css"></link>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 </head>    
 <body>
-    <h1>Job Scrapper</h1>
-    <form action="/search">
-        <input type="text" name="keyword", placeholder="Write keyword please"/>
-        <button>Search</button>
-    </form>
-    <h2>Search Results for "{{ keyword }}": </h2>
-    {% for job in jobs %}
-        <div>       
-            <span> Title: {{job.title}}</span>  
-            <span> Company: {{job.company}}</span>
-            <span> Location: {{job.location}}</span>
-            <a href="{{job.url}}" target="_blank">Apply Now</a>                   
+    <div class="container">
+        <h1><a href="/">Job Scraper.</a></h1>
+        <form action="/search">
+            <div class="search">
+                <input class="search-input" type="text" name="keyword", placeholder="Write Search Keyword"/>
+                <button class="search-button">
+                    <span class="material-symbols-outlined">search</span>
+                </button>
+            </div>
+        </form>
+        <div class="export">
+            <h2>Search Results for <span class="highlighted-keyword">{{ keyword }}</span>:</h2>
+            <a target="_blank" href="/export?keyword={{keyword}}" class="export-button">Export to file</a>
         </div>
-    {% endfor %}
-
+        <div class="job-list">
+            {% for job in jobs %}
+            <div class="jobcard">       
+                <span class="title"> {{job.title}}</span>  
+                <span class="company"> {{job.company}}</span>
+                <span class="region"> {{job.region}}</span>
+                <span class="link"><a href="{{job.link}}" target="_blank">Apply Now</a></span>                   
+            </div>
+            {% endfor %}
+        </div>
+    </div>    
 </body>
 </html>
