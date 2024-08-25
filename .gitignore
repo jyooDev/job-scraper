@@ -1,0 +1,11 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+boilerplate/__pycache__/
+classes/__pycache__/
+*.py[cod]
+*$py.class
+
+
+files/
+*.pyc
+dev_test.py
